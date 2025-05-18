@@ -1,29 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>@yield('title', 'Deliss Gift Shop')</title>
+@extends('layouts.app')
 
-    <!-- Vite CSS & JS -->
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+@section('title', 'Deliss Gift Shop')
 
-    <!-- Page-specific Scripts and Styles -->
-    @stack('scripts')
-    @yield('styles')
-
-    <!-- Optional: Favicon -->
+@section('styles')
     <link rel="icon" href="{{ asset('images/food/chocochips.svg') }}" type="image/png">
-</head>
+@endsection
 
-<body class="font-hellix">
-
-<header class="fixed top-0 left-0 right-0 z-50">
-    @include('components.header')
-</header>
-
-<main class="font-hellix bg-white text-black min-h-screen">
+@section('content')
+<main class="font-hellix bg-white text-black w-full h-full">
     <div class="flex flex-col w-full font-sans">
         <!-- Hero Section - Full Page -->
         <div class="relative w-full h-screen overflow-hidden bg-black">
@@ -235,12 +219,4 @@
         </div>
     </div>
 </main>
-
-    <!-- Footer -->
-    <footer class="text-white pt-10 pb-6 px-8 font-sans" style="background-color: #1E1E1E;">
-        <div class="container mx-auto">
-            @include('components.footer')
-        </div>
-    </footer>
-</body>
-</html>
+@endsection

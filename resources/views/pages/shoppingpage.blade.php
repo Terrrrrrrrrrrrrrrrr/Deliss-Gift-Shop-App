@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Deliss Gift Shop')</title>
+@extends('layouts.app')
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('scripts')
-    @yield('styles')
+@section('title', 'Products')
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap" rel="stylesheet">
-</head>
-<body class="font-[Montserrat] text-gray-800 bg-white">
-    <header class="fixed top-0 left-0 right-0 z-50">
-        @include('components.header')
-    </header>
-
-    <main class="bg-white pt-[150px] pb-12 min-h-screen">
+@section('content')
+    <div class="bg-white pt-[150px] pb-12 min-h-screen">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center mb-6">
                 <h1 class="text-2xl font-semibold text-gray-800">Products</h1>
@@ -53,9 +38,5 @@
                 </nav>
             </div>
         </div>
-    </main>
-    <footer>
-        @include('components.footer')
-    </footer>
-</body>
-</html>
+    </div>
+@endsection

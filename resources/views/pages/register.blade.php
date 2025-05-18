@@ -1,10 +1,6 @@
-@extends('layouts.login-register')
+@extends('layouts.app')
 
 @section('title', 'Register')
-
-@section('styles')
-<!-- No custom styles needed; TailwindCSS handles all -->
-@endsection
 
 @section('content')
 <div class="relative min-h-screen flex justify-center items-center px-8 pt-15 pb-15 overflow-hidden font-[Montserrat]">
