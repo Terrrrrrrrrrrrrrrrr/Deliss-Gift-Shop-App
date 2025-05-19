@@ -20,15 +20,14 @@
 </head>
 
 <body class="min-h-screen bg-gray-100 font-sans flex flex-col">
-    <div class="w-full py-0 px-1 bg-gray-100">
-        <div class="flex justify-end space-x-3 text-sm container mx-auto">
-            <a href="{{ route('aboutus') }}" class="text-gray-700 hover:underline">about us</a>
-            <a href="{{ route('aboutus') }}" class="text-gray-700 hover:underline">contacts</a>
-            <a href="{{ route('aboutus') }}" class="text-gray-700 hover:underline">franchising</a>
-        </div>
-    </div>
-
     <header>
+        <div class="w-full py-0 px-1 bg-gray-100">
+            <div class="flex justify-end space-x-3 text-sm container mx-auto">
+                <a href="{{ route('aboutus') }}" class="text-gray-700 hover:underline">about us</a>
+                <a href="{{ route('aboutus') }}" class="text-gray-700 hover:underline">contacts</a>
+                <a href="{{ route('aboutus') }}" class="text-gray-700 hover:underline">franchising</a>
+            </div>
+        </div>
         @include('components.header')
     </header>
 

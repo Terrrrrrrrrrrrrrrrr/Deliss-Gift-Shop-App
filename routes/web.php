@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('pages/homepage');
@@ -27,3 +28,7 @@ Route::get('/register', function () {
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
 Route::post('/products/{id}/toggle-like', [ProductController::class, 'toggleLike'])->name('products.toggle-like');
+
+
+// admin dashboard page
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
