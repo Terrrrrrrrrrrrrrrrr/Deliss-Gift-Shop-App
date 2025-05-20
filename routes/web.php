@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('pages/homepage');
+Route::redirect('/', '/home');
+
+Route::get('/home', function () {
+    return view('pages.homepage'); 
 });
 
 Route::get('/shopping', function () {

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Log In')
+@section('title', 'Sign In')
 
 @section('content')
 <div class="relative min-h-screen flex justify-center items-center px-8 pb-15 pb-15 overflow-hidden font-[Montserrat]">
