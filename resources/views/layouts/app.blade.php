@@ -52,7 +52,7 @@
     </body>
     @endif
 
-    @if(Request::is('dashboard'))
+    @if(Request::is('dashboard') || Request::is('orders'))
         <body class="font-sans antialiased">
                 <div class="min-h-screen flex flex-col">
                     <div class="flex flex-1">
@@ -68,7 +68,7 @@
         </body>
     @endif
 
-    @unless (Route::currentRouteName() === 'dashboard')
+    @unless (Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders')
         <footer>
             @include('components.footer')
         </footer>

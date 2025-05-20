@@ -4,9 +4,10 @@
 @endphp
 
 <header class="w-full text-white py-3 px-4 bg-[#1E1E1E]">
-    <div class="container mx-auto flex items-center justify-between">
-        @unless (Route::currentRouteName() === 'dashboard')
+    <div class="container px-5 mx-auto flex items-center justify-between">
+        @unless (Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders')
         <a href="/" class="text-5xl font-hellix text-rose-300">Deliss</a>
+            @unless (Route::currentRouteName() === 'login' || Route::currentRouteName() === 'register')
             <!-- Search bar -->
             <div class="flex-grow mx-4">
                 <form action="/search" method="GET" class="flex">
@@ -39,8 +40,8 @@
                 <a href="{{ route('register') }}" class="px-4 py-2 bg-[#333333] text-white rounded-full hover:bg-gray-700">
                     Sign up
                 </a>
-
-                <!-- Shopping cart -->
+            @endunless
+            <!-- Shopping cart -->
                 <a href="{{ route('products.index') }}" class="relative">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -54,10 +55,10 @@
             </div>
         @endunless
 
-        @if(Route::currentRouteName() === 'dashboard')
-            <div class="flex items-left">
-                <button id="sidebar-toggle" class="mr-4 text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+        @if(Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders')
+            <div class="flex items-center">
+                <button id="sidebar-toggle" class="mr-4 p-1 text-white hover:bg-gray-300 hover:text-black rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
                         viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                     </svg>

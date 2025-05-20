@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrdersController;
 
 Route::redirect('/', '/home');
 
@@ -34,3 +35,7 @@ Route::post('/products/{id}/toggle-like', [ProductController::class, 'toggleLike
 
 // admin dashboard page
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/orders', function () {
+    return view('pages.orders');
+})->name('orders');
