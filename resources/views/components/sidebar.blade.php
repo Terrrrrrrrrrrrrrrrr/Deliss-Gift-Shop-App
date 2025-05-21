@@ -1,7 +1,7 @@
 <!-- Sidebar -->
  <div id="sidebar" class="fixed top-5 left-0 w-64 h-screen bg-[#1E1E1E] text-white transform -translate-x-full transition-transform duration-500 ease-in-out z-20 pt-16">
     <button id="sidebar-close" class="absolute p-1 top-5 left-9 text-white hover:bg-gray-300 hover:text-black rounded-lg">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" 
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
             viewBox="0 0 24 24" stroke="currentColor">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="" class="block p-3 rounded-lg border border-gray-500 hover:bg-gray-800 flex items-center {{ request()->routeIs('inventory') ? 'bg-black bg-opacity-30 border-l-4 border-pink-300' : '' }}">
+                    <a href="{{ route('inventory') }}" class="block p-3 rounded-lg border border-gray-500 hover:bg-gray-800 flex items-center {{ request()->routeIs('inventory') ? 'bg-black bg-opacity-30 border-l-4 border-pink-300' : '' }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                         </svg>

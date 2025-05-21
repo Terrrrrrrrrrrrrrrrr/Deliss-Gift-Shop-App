@@ -8,7 +8,7 @@ use App\Http\Controllers\OrdersController;
 Route::redirect('/', '/home');
 
 Route::get('/home', function () {
-    return view('pages.homepage'); 
+    return view('pages.homepage');
 });
 
 Route::get('/shopping', function () {
@@ -35,7 +35,7 @@ Route::post('/products/{id}/toggle-like', [ProductController::class, 'toggleLike
 
 // admin dashboard page
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 Route::get('/orders', function () {
-    return view('pages.orders');
+    return view('admin.orders');
 })->name('orders');
+Route::view('/inventory', 'admin.inventory')->name('inventory');

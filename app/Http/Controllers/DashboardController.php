@@ -44,15 +44,12 @@ class DashboardController extends Controller
                 $monthlySalesData = $this->getMonthlySalesData();
             }
 
-            // Get notifications
             if (class_exists('App\Models\Notification')) {
                 $notifications = Notification::latest()->take(5)->get();
             }
         } catch (\Exception $e) {
-            // Log the error
             Log::error('Dashboard data error: ' . $e->getMessage());
 
-            // Set default values in case of error
             $totalAccounts = 0;
             $totalSales = 0;
             $totalRevenue = 0;
@@ -64,7 +61,7 @@ class DashboardController extends Controller
         }
 
         // Always ensure these variables are defined
-        return view('pages.dashboard', compact(
+        return view('admin.dashboard', compact(
             'totalAccounts',
             'totalSales',
             'totalRevenue',

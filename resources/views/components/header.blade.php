@@ -3,18 +3,30 @@
     $cartCount = session('cart_count', 0);
 @endphp
 
-<header class="w-full text-white py-3 px-4 bg-[#1E1E1E]">
+<header class="w-full text-white py-3 px-4 bg-[#1E1E1E] z-1000">
     <div class="container px-5 mx-auto flex items-center justify-between">
-        @unless (Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders')
+        @unless (Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders' || Route::currentRouteName() === 'inventory')
+            <!-- Logo -->
+            <div class="flex items-center">
+                @if ($isLoggedIn)
+                    <button id="sidebar-toggle" class="mr-4 p-1 text-white hover:bg-gray-300 hover:text-black rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                @endif
+            </div>
+            <!-- Brand name -->
         <a href="/" class="text-5xl font-hellix text-rose-300">Deliss</a>
             @unless (Route::currentRouteName() === 'login' || Route::currentRouteName() === 'register')
             <!-- Search bar -->
             <div class="flex-grow mx-4">
                 <form action="/search" method="GET" class="flex">
-                    <input 
-                        type="text" 
-                        name="query" 
-                        placeholder="lorem ipsum dolor sit amet" 
+                    <input
+                        type="text"
+                        name="query"
+                        placeholder="lorem ipsum dolor sit amet"
                         class="w-full px-4 py-2 rounded-l-full text-black bg-white"
                     >
                     <button type="submit" class="bg-pink-300 text-gray-800 px-4 py-2 rounded-r-full flex items-center">
@@ -55,7 +67,7 @@
             </div>
         @endunless
 
-        @if(Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders')
+        @if(Route::currentRouteName() === 'dashboard' || Route::currentRouteName() === 'orders' || Route::currentRouteName() === 'inventory')
             <div class="flex items-center">
                 <button id="sidebar-toggle" class="mr-4 p-1 text-white hover:bg-gray-300 hover:text-black rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none"
