@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Deliss Gift Shop')</title>
 
-    <blade
-        vite|(%5B%26%2339%3Bresources%2Fcss%2Fapp.css%26%2339%3B%2C%20%26%2339%3Bresources%2Fjs%2Fapp.js%26%2339%3B%5D)%0D>
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
         @stack('scripts')
         @yield('styles')
 
