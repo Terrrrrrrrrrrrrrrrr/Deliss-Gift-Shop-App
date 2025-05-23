@@ -26,6 +26,10 @@ Route::get('/register', function () {
 Route::get('/profile', function () {
     return view('pages.userprofile');
 })->name('userprofile');
+Route::get('/myproducts', function () {
+    return view('pages.myproducts');
+})->name('myproducts');
+
 
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');

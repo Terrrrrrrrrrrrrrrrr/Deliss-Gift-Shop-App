@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@yield('title', 'Deliss Gift Shop')</title>
 
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <blade
+        vite|(%5B%26%2339%3Bresources%2Fcss%2Fapp.css%26%2339%3B%2C%20%26%2339%3Bresources%2Fjs%2Fapp.js%26%2339%3B%5D)%0D>
         @stack('scripts')
         @yield('styles')
 
@@ -15,6 +16,8 @@
         <link
             href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&display=swap"
             rel="stylesheet">
+        <!-- Alpine.js for minimal interactivity -->
+        <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
 
 <body class="font-[Montserrat] text-gray-800 bg-white">
@@ -56,8 +59,8 @@
 
         <!-- Main Content -->
         <main class="flex-1 max-w-3xl mx-auto p-6 mt-10">
-            <div class="flex justify-between items-center mb-4 mx-4">
-                <h1 class="text-3xl font-bold">My Profile</h1>
+            <div class="flex justify-between items-center mb-4">
+                <h1 class="text-3xl font-bold">My Products</h1>
                 <button onclick="location.reload()"
                     class="flex items-center gap-2 bg-white text-black border border-gray-300 px-4 py-2 rounded shadow-md hover:bg-gray-100">
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
@@ -66,48 +69,58 @@
                     </svg>
                     Refresh
                 </button>
-
             </div>
-            <div class="bg-white p-6 rounded-lg shadow-md">
-                <div class="flex flex-col items-center mb-6">
-                    <div class="w-24 h-24 bg-gray-300 rounded-full flex items-center justify-center mb-2">
-                        <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 24 24">
-                            <path
-                                d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z" />
-                        </svg>
-                    </div>
-                    <button class="bg-white border px-4 py-1 rounded shadow text-sm hover:bg-gray-100">Upload
-                        Photo</button>
-                    <p class="text-xs text-gray-500 mt-1">File size: maximum 1 MB<br>File extension: .JPEG, .PNG</p>
+
+            <!-- Tabs -->
+            <div x-data="{ tab: 'all' }">
+                <div
+                    class="bg-white rounded-xl shadow p-4 flex items-center justify-between text-lg font-semibold text-gray-500">
+                    <button @click="tab = 'all'" class="flex items-center space-x-1"
+                        :class="tab === 'all' ? 'text-red-600' : 'cursor-pointer hover:text-black'">
+                        <span>All</span>
+                    </button>
+                    <button @click="tab = 'to_pay'" class="flex items-center space-x-1"
+                        :class="tab === 'to_pay' ? 'text-red-600' : 'cursor-pointer hover:text-black'">To Pay</button>
+                    <button @click="tab = 'to_receive'" class="flex items-center space-x-1"
+                        :class="tab === 'to_receive' ? 'text-red-600' : 'cursor-pointer hover:text-black'">To Recieve</button>
+                    <button @click="tab = 'completed'" class="flex items-center space-x-1"
+                        :class="tab === 'completed' ? 'text-red-600' : 'cursor-pointer hover:text-black'">Completed</button>
+                    <button @click="tab = 'cancelled'" class="flex items-center space-x-1"
+                        :class="tab === 'cancelled' ? 'text-red-600' : 'cursor-pointer hover:text-black'">Cancelled</button>
+                    <button @click="tab = 'refunded'" class="flex items-center space-x-1"
+                        :class="tab === 'refunded' ? 'text-red-600' : 'cursor-pointer hover:text-black'">Refunded</button>
                 </div>
 
-                <form class="space-y-4">
-                    <div>
-                        <label class="block text-sm font-semibold mb-1">Username</label>
-                        <input type="text" value="Micheal_Jakson" class="w-full border px-3 py-2 rounded" />
+                <!-- Search -->
+                <div class="bg-white rounded-xl shadow mt-6 p-4">
+                    <div class="mb-4">
+                        <div class="relative w-full">
+                            <input type="text" placeholder="Search"
+                                class="w-full border rounded-lg pl-10 pr-4 py-2 shadow-inner focus:outline-none" />
+                            <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-500" fill="none" stroke="currentColor"
+                                stroke-width="2" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                            </svg>
+                        </div>
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-1">Email Address</label>
-                        <input type="email" value="micheal.jakson@gmail.com" class="w-full border px-3 py-2 rounded" />
+
+                    <!-- Table -->
+                    <div x-show="tab === 'all'" x-transition class="overflow-x-auto">
+                        @include('components.tables.all')
                     </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-1">Contact Number</label>
-                        <input type="text" value="099999999" class="w-full border px-3 py-2 rounded" />
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-1">Current Password</label>
-                        <input type="password" value="**********" class="w-full border px-3 py-2 rounded" />
-                    </div>
-                    <div>
-                        <label class="block text-sm font-semibold mb-1">Confirm Password</label>
-                        <input type="password" value="******" class="w-full border px-3 py-2 rounded" />
-                    </div>
-                    <div class="text-center text-red-500 text-sm underline cursor-pointer">Change Password</div>
-                    <div class="pt-4 flex items-center justify-center">
-                        <button type="submit"
-                            class="w-96 bg-red-600 text-white py-2 rounded hover:bg-red-700 font-semibold">SAVE</button>
-                    </div>
-                </form>
+                </div>
+
+                <div x-show="tab === 'to_pay'" x-transition class="overflow-x-auto">@include('components.tables.to_pay')
+                </div>
+                <div x-show="tab === 'to_receive'" x-transition class="overflow-x-auto">
+                    @include('components.tables.to_receive')</div>
+                <div x-show="tab === 'completed'" x-transition class="overflow-x-auto">
+                    @include('components.tables.completed')</div>
+                <div x-show="tab === 'cancelled'" x-transition class="overflow-x-auto">
+                    @include('components.tables.cancelled')</div>
+                <div x-show="tab === 'refunded'" x-transition class="overflow-x-auto">
+                    @include('components.tables.refunded')</div>
             </div>
         </main>
     </div>
