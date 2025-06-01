@@ -23,6 +23,14 @@ Route::get('/register', function () {
     return view('pages.register');
 })->name('register');
 
+Route::get('/profile', function () {
+    return view('pages.userprofile');
+})->name('userprofile');
+Route::get('/myproducts', function () {
+    return view('pages.myproducts');
+})->name('myproducts');
+
+
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{id}', [ProductController::class, 'show'])->name('products.show');
